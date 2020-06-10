@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="홍길동의 포트폴리오">
+  <meta name="author" content="Mr hong">
+
+  <title>홍길동의 포트폴리오</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/business-casual.min.css" rel="stylesheet">
+
+  <!-- user style -->
+  <link rel="stylesheet" href="css/ui.css">
+  <style>
+    .circles {
+      display:flex;
+      flex-flow:column wrap;
+      justify-content:space-around;
+      align-items: center;
+      margin-bottom: -10px;
+    }
+
+    .circle {
+      width: 140px;
+      margin: 6px 6px 20px;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .circle canvas {
+      vertical-align: top;
+    }
+
+    .circle strong {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform:translateY(-75%);
+      width: 100%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 24px;
+      color:#666;
+    }
+
+    .circle strong i {
+      font-style: normal;
+      font-size: 0.6em;
+      font-weight: normal;
+    }
+
+    .circle span {
+      display: block;
+      color: #333;
+      margin-top: 12px;
+      font-size:1.4rem;
+    }
+
+  @media (min-width:768px){
+    .circles{
+      flex-flow:row nowrap;
+
+    }
+  }
+  </style>
+</head>
+
+  <body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <span class="site-heading-upper text-primary mb-3">홍길동의 Portfolio</span>
+      <span class="site-heading-lower">Skill</span>
+    </h1>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="skill.html">Skill</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="portfolio.html">Portfolio</a>
+            </li>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+             
+              <div class="circles">
+                <div class="first circle">
+                  <strong></strong>
+                  <span>HTML</span>
+                </div>
+            
+                <div class="second circle">
+                  <strong></strong>
+                  <span>CSS</span>
+                </div>
+            
+                <div class="third circle">
+                  <strong></strong>
+                  <span>JS</span>
+                </div>           
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/js/circle-progress.min.js"></script>
+
+  </body>
+  <script>
+    $(function(){
+      
+      resetPro();
+      var switchValue=0;
+
+      $(window).scroll(function(){
+        // 스크롤값
+        var scrTop=$(document).scrollTop();
+        // progress 값
+        var ctaTop=$('.cta').offset().top;
+        
+        if(scrTop>=ctaTop-200 && switchValue==0){
+          
+          setPro();
+        }else if(scrTop<ctaTop-200){
+         
+          resetPro();
+        }
+      });
+
+      $(window).resize(function(){
+        
+        resetPro();
+      })
+
+      function resetPro(){
+        switchValue=0;
+        // PROGRESS01
+        $('.first.circle').circleProgress({
+          value: 0,
+          fill:'#ff0000',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(0 * progress) + '<i>%</i>');
+        });
+
+        // PROGRESS02
+        $('.second.circle').circleProgress({
+          value: 0,
+          fill:'#00ff00',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(0 * progress) + '<i>%</i>');
+        });
+
+        // PROGRESS03
+        $('.third.circle').circleProgress({
+          value: 0,
+          fill:'#0000ff',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(0 * progress) + '<i>%</i>');
+        });
+      }
+
+      function setPro(){
+        switchValue=1;
+        // PROGRESS01
+        $('.first.circle').circleProgress({
+          value: 0.9,
+          fill:'#ff0000',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
+        });
+
+        // PROGRESS02
+        $('.second.circle').circleProgress({
+          value: 0.9,
+          fill:'#00ff00',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(90 * progress) + '<i>%</i>');
+        });
+
+        // PROGRESS03
+        $('.third.circle').circleProgress({
+          value: 0.7,
+          fill:'#0000ff',
+          size:140,
+          thickness:20,
+          lineCap:'round',
+          animation:{
+          duration: 2000
+          }
+        }).on('circle-animation-progress', function(event, progress) {
+          $(this).find('strong').html(Math.round(70 * progress) + '<i>%</i>');
+        });
+      }
+    })
+  </script>
+
+</html>
