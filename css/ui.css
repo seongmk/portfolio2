@@ -1,0 +1,17 @@
+@charset 'utf-8';
+
+body{
+  background-image:
+  linear-gradient(rgba(255,255,255,0.2),rgba(0,0,0,0.2)) url('../img/bg.jpg');
+}
+.site-heading .site-heading-lower {font-weight: 700;}
+#mainNav{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color:rgba(153,102,102,.9);
+}
+.intro-img{filter:blur(10px);}
+.footer {
+  background-color:rgba(153,102,102,.9);
+}
